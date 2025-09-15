@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SearchPage from './components/SearchPage';
 import { 
   ArrowRight, 
   CheckCircle, 
@@ -19,12 +20,17 @@ import {
 } from 'lucide-react';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState<'landing' | 'search'>('landing');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
+
+  if (currentPage === 'search') {
+    return <SearchPage userName="Alex" />;
+  }
 
   const benefits = [
     {
@@ -129,7 +135,10 @@ function App() {
                 <a href="#how-it-works" className="text-gray-600 hover:text-[#3E1E68] px-3 py-2 rounded-md text-sm font-medium transition-colors">How It Works</a>
                 <a href="#testimonials" className="text-gray-600 hover:text-[#3E1E68] px-3 py-2 rounded-md text-sm font-medium transition-colors">Reviews</a>
                 <a href="#faq" className="text-gray-600 hover:text-[#3E1E68] px-3 py-2 rounded-md text-sm font-medium transition-colors">FAQ</a>
-                <button className="bg-gradient-to-r from-[#E45A92] to-[#FFACAC] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-semibold">
+                <button 
+                  onClick={() => setCurrentPage('search')}
+                  className="bg-gradient-to-r from-[#E45A92] to-[#FFACAC] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-semibold"
+                >
                   Buy Smart
                 </button>
               </div>
@@ -154,7 +163,10 @@ function App() {
                 <a href="#how-it-works" className="text-gray-600 hover:text-[#3E1E68] block px-3 py-2 rounded-md text-base font-medium">How It Works</a>
                 <a href="#testimonials" className="text-gray-600 hover:text-[#3E1E68] block px-3 py-2 rounded-md text-base font-medium">Reviews</a>
                 <a href="#faq" className="text-gray-600 hover:text-[#3E1E68] block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
-                <button className="w-full bg-gradient-to-r from-[#E45A92] to-[#FFACAC] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-semibold mt-2">
+                <button 
+                  onClick={() => setCurrentPage('search')}
+                  className="w-full bg-gradient-to-r from-[#E45A92] to-[#FFACAC] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-semibold mt-2"
+                >
                   Buy Smart
                 </button>
               </div>
@@ -186,7 +198,10 @@ function App() {
               Easily compare reviews, prices and get personalized recommendations in one app.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-gradient-to-r from-[#E45A92] to-[#FFACAC] text-white px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center">
+              <button 
+                onClick={() => setCurrentPage('search')}
+                className="bg-gradient-to-r from-[#E45A92] to-[#FFACAC] text-white px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center"
+              >
                 Buy Smart
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
@@ -343,7 +358,10 @@ function App() {
           <p className="text-xl text-white mb-8 opacity-90">
             Join thousands of smart shoppers who make better decisions with WisePick
           </p>
-          <button className="bg-gradient-to-r from-[#FFACAC] to-[#E45A92] text-[#3E1E68] px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+          <button 
+            onClick={() => setCurrentPage('search')}
+            className="bg-gradient-to-r from-[#FFACAC] to-[#E45A92] text-[#3E1E68] px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+          >
             Buy Smart - It's Free!
           </button>
         </div>
